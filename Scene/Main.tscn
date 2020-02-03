@@ -1,0 +1,178 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scene/theme.tres" type="Theme" id=1]
+[ext_resource path="res://Scene/TopMenuContainer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scene/SheetNoteSaveDialog.gd" type="Script" id=3]
+[ext_resource path="res://Scene/SheetNoteLoadDialog.gd" type="Script" id=4]
+[ext_resource path="res://Scene/PropertyGroup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scene/Properties.gd" type="Script" id=6]
+[ext_resource path="res://Scene/Main.gd" type="Script" id=7]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+node_path_property = NodePath("Panel/VBoxContainer/MainContainer/HSplitContainer/RightMenu/SheetNoteProperty/속성/Properties/SheetNoteBase")
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopMenuContainer" parent="Panel/VBoxContainer" instance=ExtResource( 2 )]
+sheetnote_save_dialog = NodePath("../../../SheetNoteSaveDialog")
+sheetnote_load_dialog = NodePath("../../../SheetNoteLoadDialog")
+
+[node name="MainContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+margin_top = 35.0
+margin_right = 580.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+custom_constants/margin_right = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Panel/VBoxContainer/MainContainer"]
+margin_left = 5.0
+margin_right = 575.0
+margin_bottom = 560.0
+size_flags_vertical = 3
+
+[node name="NoteEditScreen" type="VSplitContainer" parent="Panel/VBoxContainer/MainContainer/HSplitContainer"]
+margin_right = 362.0
+margin_bottom = 560.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="NoteContainer" type="TabContainer" parent="Panel/VBoxContainer/MainContainer/HSplitContainer/NoteEditScreen"]
+margin_right = 362.0
+margin_bottom = 560.0
+size_flags_horizontal = 11
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.33
+tab_align = 0
+drag_to_rearrange_enabled = true
+
+[node name="비어있음" type="Panel" parent="Panel/VBoxContainer/MainContainer/HSplitContainer/NoteEditScreen/NoteContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 33.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="RightMenu" type="VSplitContainer" parent="Panel/VBoxContainer/MainContainer/HSplitContainer"]
+margin_left = 370.0
+margin_right = 570.0
+margin_bottom = 560.0
+
+[node name="SheetNoteList" type="TabContainer" parent="Panel/VBoxContainer/MainContainer/HSplitContainer/RightMenu"]
+visible = false
+margin_right = 200.0
+margin_bottom = 239.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tab_align = 0
+
+[node name="노트시트" type="ScrollContainer" parent="Panel/VBoxContainer/MainContainer/HSplitContainer/RightMenu/SheetNoteList"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 33.0
+margin_right = -5.0
+margin_bottom = -5.0
+size_flags_horizontal = 3
+
+[node name="Tree" type="Tree" parent="Panel/VBoxContainer/MainContainer/HSplitContainer/RightMenu/SheetNoteList/노트시트"]
+margin_right = 190.0
+margin_bottom = 201.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SheetNoteProperty" type="TabContainer" parent="Panel/VBoxContainer/MainContainer/HSplitContainer/RightMenu"]
+margin_right = 200.0
+margin_bottom = 560.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.3
+tab_align = 0
+
+[node name="속성" type="ScrollContainer" parent="Panel/VBoxContainer/MainContainer/HSplitContainer/RightMenu/SheetNoteProperty"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 33.0
+margin_right = -5.0
+margin_bottom = -5.0
+size_flags_horizontal = 3
+
+[node name="Properties" type="VBoxContainer" parent="Panel/VBoxContainer/MainContainer/HSplitContainer/RightMenu/SheetNoteProperty/속성"]
+margin_right = 190.0
+margin_bottom = 522.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 6 )
+
+[node name="SheetNoteBase" parent="Panel/VBoxContainer/MainContainer/HSplitContainer/RightMenu/SheetNoteProperty/속성/Properties" instance=ExtResource( 5 )]
+
+[node name="SheetNoteSaveDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -181.0
+margin_top = -125.0
+margin_right = 181.0
+margin_bottom = 125.0
+window_title = "노트시트를 새로 만듭니다"
+resizable = true
+access = 2
+filters = PoolStringArray( "*.sheetnote" )
+current_dir = "C:/Users/Dabin/Desktop"
+current_path = "C:/Users/Dabin/Desktop/"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SheetNoteLoadDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -181.0
+margin_top = -125.0
+margin_right = 181.0
+margin_bottom = 125.0
+window_title = "디렉토리 또는 파일 열기"
+resizable = true
+mode = 3
+access = 2
+filters = PoolStringArray( "*.sheetnote" )
+current_dir = "C:/Users/Dabin/Desktop"
+current_path = "C:/Users/Dabin/Desktop/"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="add_sheet_note_file" from="SheetNoteSaveDialog" to="." method="_on_SheetNoteSaveDialog_add_sheet_note_file"]
+[connection signal="confirmed" from="SheetNoteSaveDialog" to="SheetNoteSaveDialog" method="_on_SheetNoteSaveDialog_confirmed"]
+[connection signal="file_selected" from="SheetNoteSaveDialog" to="SheetNoteSaveDialog" method="_on_SheetNoteSaveDialog_file_selected"]
+[connection signal="confirmed" from="SheetNoteLoadDialog" to="SheetNoteLoadDialog" method="_on_SheetNoteLoadDialog_confirmed"]
+[connection signal="file_selected" from="SheetNoteLoadDialog" to="SheetNoteLoadDialog" method="_on_SheetNoteLoadDialog_file_selected"]

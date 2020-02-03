@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scene/TopMenuContainer.gd" type="Script" id=1]
+
+[node name="TopMenuContainer" type="MarginContainer"]
+margin_right = 580.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_vertical = 9
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 17.0
+margin_bottom = 31.0
+size_flags_horizontal = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="MenuButton" parent="HBoxContainer"]
+margin_right = 12.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "파일"
+items = [ "새 노트시트", null, 0, false, false, 0, 0, null, "", false, "불러오기", null, 0, false, false, 1, 0, null, "", false, "저장하기", null, 0, false, false, 2, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,80 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "PropertyPanel",
+"class": "LineEditPanel",
+"language": "GDScript",
+"path": "res://Scene/LineEditPanel.gd"
+}, {
+"base": "VBoxContainer",
+"class": "Properties",
+"language": "GDScript",
+"path": "res://Scene/Properties.gd"
+}, {
+"base": "HBoxContainer",
+"class": "Property",
+"language": "GDScript",
+"path": "res://Scene/Property.gd"
+}, {
+"base": "Panel",
+"class": "PropertyGroup",
+"language": "GDScript",
+"path": "res://Scene/PropertyGroup.gd"
+}, {
+"base": "Panel",
+"class": "PropertyPanel",
+"language": "GDScript",
+"path": "res://Scene/PropertyPanel.gd"
+}, {
+"base": "Object",
+"class": "PropertySet",
+"language": "GDScript",
+"path": "res://Scene/PropertySet.gd"
+}, {
+"base": "Object",
+"class": "SheetNote",
+"language": "GDScript",
+"path": "res://Scene/SheetNote.gd"
+} ]
+_global_script_class_icons={
+"LineEditPanel": "",
+"Properties": "",
+"Property": "",
+"PropertyGroup": "",
+"PropertyPanel": "",
+"PropertySet": "",
+"SheetNote": ""
+}
+
+[application]
+
+config/name="SheetNoteEditor"
+run/main_scene="res://Scene/Main.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+SheetNoteManager="*res://Scene/SheetNoteManager.tscn"
+
+[display]
+
+window/size/width=580
+
+[locale]
+
+locale_filter=[ 1, [ "en", "ja", "ko" ] ]
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"
