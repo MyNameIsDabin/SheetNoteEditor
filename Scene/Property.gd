@@ -7,7 +7,7 @@ func _ready():
 
 func set_property(name, propertySet: PropertySet):
 	$Name.text = name
-	var panel_node = propertySet.packed_preprty_panel().instance()
+	var panel_node = propertySet.proprty_panel_node()
 	panel_node.set_value(propertySet)
 	add_child(panel_node)
 

@@ -1,18 +1,19 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scene/theme.tres" type="Theme" id=1]
-[ext_resource path="res://Scene/TopMenuContainer.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scene/SheetNoteSaveDialog.gd" type="Script" id=3]
-[ext_resource path="res://Scene/SheetNoteLoadDialog.gd" type="Script" id=4]
+[ext_resource path="res://Scene/Main.gd" type="Script" id=2]
+[ext_resource path="res://Scene/TopMenuContainer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scene/Properties.gd" type="Script" id=4]
 [ext_resource path="res://Scene/PropertyGroup.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scene/Properties.gd" type="Script" id=6]
-[ext_resource path="res://Scene/Main.gd" type="Script" id=7]
+[ext_resource path="res://Scene/SheetNoteSaveDialog.gd" type="Script" id=6]
+[ext_resource path="res://Scene/SheetNoteLoadDialog.gd" type="Script" id=7]
+[ext_resource path="res://Scene/MusicLoadDialog.gd" type="Script" id=8]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
-script = ExtResource( 7 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -32,7 +33,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TopMenuContainer" parent="Panel/VBoxContainer" instance=ExtResource( 2 )]
+[node name="TopMenuContainer" parent="Panel/VBoxContainer" instance=ExtResource( 3 )]
 sheetnote_save_dialog = NodePath("../../../SheetNoteSaveDialog")
 sheetnote_load_dialog = NodePath("../../../SheetNoteLoadDialog")
 
@@ -127,7 +128,7 @@ margin_right = 190.0
 margin_bottom = 522.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 6 )
+script = ExtResource( 4 )
 
 [node name="SheetNoteBase" parent="Panel/VBoxContainer/MainContainer/HSplitContainer/RightMenu/SheetNoteProperty/속성/Properties" instance=ExtResource( 5 )]
 
@@ -146,7 +147,7 @@ access = 2
 filters = PoolStringArray( "*.sheetnote" )
 current_dir = "C:/Users/Dabin/Desktop"
 current_path = "C:/Users/Dabin/Desktop/"
-script = ExtResource( 3 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -167,12 +168,30 @@ access = 2
 filters = PoolStringArray( "*.sheetnote" )
 current_dir = "C:/Users/Dabin/Desktop"
 current_path = "C:/Users/Dabin/Desktop/"
-script = ExtResource( 4 )
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MusicLoadDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -181.0
+margin_top = -125.0
+margin_right = 181.0
+margin_bottom = 125.0
+window_title = "음원파일 불러오기"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.ogg", "*.mid" )
+current_dir = "C:/Users/Dabin/Desktop"
+current_path = "C:/Users/Dabin/Desktop/"
+script = ExtResource( 8 )
 [connection signal="add_sheet_note_file" from="SheetNoteSaveDialog" to="." method="_on_SheetNoteSaveDialog_add_sheet_note_file"]
-[connection signal="confirmed" from="SheetNoteSaveDialog" to="SheetNoteSaveDialog" method="_on_SheetNoteSaveDialog_confirmed"]
 [connection signal="file_selected" from="SheetNoteSaveDialog" to="SheetNoteSaveDialog" method="_on_SheetNoteSaveDialog_file_selected"]
 [connection signal="confirmed" from="SheetNoteLoadDialog" to="SheetNoteLoadDialog" method="_on_SheetNoteLoadDialog_confirmed"]
 [connection signal="file_selected" from="SheetNoteLoadDialog" to="SheetNoteLoadDialog" method="_on_SheetNoteLoadDialog_file_selected"]
+[connection signal="file_selected" from="MusicLoadDialog" to="MusicLoadDialog" method="_on_MusicLoadDialog_file_selected"]

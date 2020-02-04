@@ -7,3 +7,6 @@ func _ready():
 
 func set_value(property: PropertySet):
 	pass
+	
+func set_option(option: Dictionary):
+	pass

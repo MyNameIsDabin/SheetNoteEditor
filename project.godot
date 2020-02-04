@@ -10,9 +10,18 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "PropertyPanel",
+"class": "FilePanel",
+"path": "res://Scene/FilePanel.gd"
+}, {
+"base": "PropertyPanel",
 "class": "LineEditPanel",
 "language": "GDScript",
 "path": "res://Scene/LineEditPanel.gd"
+}, {
+"base": "PropertyPanel",
+"class": "NumericPanel",
+"language": "GDScript",
+"path": "res://Scene/NumericPanel.gd"
 }, {
 "base": "VBoxContainer",
 "class": "Properties",
@@ -39,13 +48,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scene/PropertySet.gd"
 }, {
-"base": "Object",
+"base": "Node",
 "class": "SheetNote",
 "language": "GDScript",
 "path": "res://Scene/SheetNote.gd"
 } ]
 _global_script_class_icons={
+"FilePanel": "",
 "LineEditPanel": "",
+"NumericPanel": "",
 "Properties": "",
 "Property": "",
 "PropertyGroup": "",
